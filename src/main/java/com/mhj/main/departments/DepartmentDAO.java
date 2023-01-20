@@ -5,13 +5,17 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.mhj.main.util.DBConnection;
 
 public class DepartmentDAO {
 	
 	//월급의 평균
-	public void getAvg() throws Exception {
+	public HashMap<String, Double> getAvg() throws Exception {
+		
+		HashMap<String, Double> map = new HashMap<String, Double>();
+		
 		Connection connection = DBConnection.getConncetion();
 		
 		String sql = "SELECT AVG(SALARY), SUM(SALARY) FROM EMPLOYEES";
@@ -22,10 +26,16 @@ public class DepartmentDAO {
 		
 		rs.next();
 		
-		System.out.println(rs.getDouble(1));
-		System.out.println(rs.getDouble(2));
+		//1. List, Array
+		//2. DTO (Class)
+		//3. Map (Key, Value)
+		
+		map.put("avg", rs.getDouble("AVG(SALARY)"));
+		map.put("sum", rs.getDouble(2));
 		
 		DBConnection.disConnect(rs, st, connection);
+		
+		return map;
 	}
 	
 	//method 1 : query 1

@@ -36,7 +36,7 @@ public class EmployeeDAO {
 			employeeDTO.setLast_name(rs.getString("LAST_NAME"));
 			employeeDTO.setEmail(rs.getString("EMAIL"));
 			employeeDTO.setPhone_number(rs.getString("PHONE_NUMBER"));
-			employeeDTO.setHire_date(rs.getDate("HIRE_DATE"));
+			employeeDTO.setHire_date(rs.getString("HIRE_DATE"));
 			employeeDTO.setJob_id(rs.getString("JOB_ID"));
 			employeeDTO.setSalary(rs.getDouble("SALARY"));
 			employeeDTO.setCommission_pct(rs.getDouble("COMMISSION_PCT"));
@@ -82,7 +82,7 @@ public class EmployeeDAO {
 			employeeDTO.setLast_name(rs.getString("LAST_NAME"));
 			employeeDTO.setEmail(rs.getString("EMAIL"));
 			employeeDTO.setPhone_number(rs.getString("PHONE_NUMBER"));
-			employeeDTO.setHire_date(rs.getDate("HIRE_DATE"));
+			employeeDTO.setHire_date(rs.getString("HIRE_DATE"));
 			employeeDTO.setJob_id(rs.getString("JOB_ID"));
 			employeeDTO.setSalary(rs.getDouble("SALARY"));
 			employeeDTO.setCommission_pct(rs.getDouble("COMMISSION_PCT"));
@@ -119,7 +119,7 @@ public class EmployeeDAO {
 			employeeDTO.setLast_name(rs.getString("LAST_NAME"));
 			employeeDTO.setEmail(rs.getString("EMAIL"));
 			employeeDTO.setPhone_number(rs.getString("PHONE_NUMBER"));
-			employeeDTO.setHire_date(rs.getDate("HIRE_DATE"));
+			employeeDTO.setHire_date(rs.getString("HIRE_DATE"));
 			employeeDTO.setJob_id(rs.getString("JOB_ID"));
 			employeeDTO.setSalary(rs.getDouble("SALARY"));
 			employeeDTO.setCommission_pct(rs.getDouble("COMMISSION_PCT"));
@@ -147,7 +147,7 @@ public class EmployeeDAO {
 		st.setString(2, employeeDTO.getLast_name());
 		st.setString(3, employeeDTO.getEmail());
 		st.setString(4, employeeDTO.getPhone_number());
-		st.setDate(5, employeeDTO.getHire_date());
+		st.setString(5, employeeDTO.getHire_date());
 		st.setString(6, employeeDTO.getJob_id());
 		st.setDouble(7, employeeDTO.getSalary());
 		st.setDouble(8, employeeDTO.getCommission_pct());

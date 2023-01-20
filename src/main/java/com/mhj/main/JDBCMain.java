@@ -15,26 +15,11 @@ public class JDBCMain {
 
 		System.out.println("Strat");
 		
-		DepartmentDAO departmentDAO = new DepartmentDAO();	
-		LocationDAO locationDAO = new LocationDAO();
-		
-		DepartmentController departmentController = new DepartmentController();
-		LocationController locationController = new LocationController();
-		EmployeeController employeeController = new EmployeeController();
+		FrontController fc = new FrontController();
 		
 		try {
-//			departmentDAO.getList();
-//			locationDAO.getList();
-//			departmentDAO.getDetail(3000);
-//			locationDAO.getDetail(1000);
 			
-//			departmentController.start();
-			locationController.start();
-//			employeeController.start();
-			
-//			DepartmentDTO departmentDTO = new DepartmentDTO();
-//			departmentDTO.setDepartment_id(280);
-//			int result = departmentDAO.deleteData(departmentDTO);
+			fc.start();
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

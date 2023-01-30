@@ -1,5 +1,9 @@
 package com.mhj.main.departments;
 
+import java.util.ArrayList;
+
+import com.mhj.main.employees.EmployeeDTO;
+
 public class DepartmentDTO {
 	
 	//모든 멤버 변수의 접근 지정자는 private
@@ -14,10 +18,16 @@ public class DepartmentDTO {
 	private Integer manager_id;
 	private Integer location_id;
 	
-	
+	private ArrayList<EmployeeDTO> employeeDTO;
 	
 	// Getter, Setter -------------------------------------------
 	
+	public ArrayList<EmployeeDTO> getEmployeeDTO() {
+		return employeeDTO;
+	}
+	public void setEmployeeDTO(ArrayList<EmployeeDTO> employeeDTO) {
+		this.employeeDTO = employeeDTO;
+	}
 	public Integer getDepartment_id() {
 		return department_id;
 	}

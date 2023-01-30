@@ -7,9 +7,65 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.mhj.main.employees.EmployeeDTO;
 import com.mhj.main.util.DBConnection;
 
 public class DepartmentDAO {
+	
+	public void getInfos() throws Exception {
+		Connection connection = DBConnection.getConncetion();
+		
+		String sql = "SELECT E.FIRST_NAME, D.DEPARTMENT_NAME "
+				+ "FROM EMPLOYEES E "
+				+ "INNER JOIN DEPARTMENTS D "
+				+ "ON (E.DEPARTMENT_ID = D.DEPARTMENT_ID "
+				+ "WHERE D.DEPARTMENT_ID = 30";
+		
+		PreparedStatement st = connection.prepareStatement(sql);
+		
+		ResultSet rs = st.executeQuery();
+		
+		DepartmentDTO departmentDTO = new DepartmentDTO();
+		departmentDTO.setEmployeeDTO(new ArrayList<EmployeeDTO>());
+		
+		while (rs.next()) {
+			if(departmentDTO.getDepartment_name() == null) {
+				departmentDTO.setDepartment_name(rs.getString("DEPARTMENT_NAME"));
+			}
+			EmployeeDTO employeeDTO = new EmployeeDTO();
+			employeeDTO.setFirst_name(rs.getString("FIRST_NAME"));
+			departmentDTO.getEmployeeDTO().add(employeeDTO);
+		}
+	}
+	
+	//join
+	public DepartmentDTO getInfo() throws Exception {
+		DepartmentDTO departmentDTO = null;
+		
+		Connection connection = DBConnection.getConncetion();
+		String sql = "SELECT E.FIRST_NAME, D.DEPARTMENT_NAME "
+				+ "FROM EMPLOYEES E "
+				+ "INNER JOIN "
+				+ "DEPARTMENTS D "
+				+ "ON (E.DEPARTMENT_ID = D.DEPARTMENT_ID) "
+				+ "WHERE E.EMPLOYEE_ID = 100";
+		
+		PreparedStatement st = connection.prepareStatement(sql);
+		
+		ResultSet rs = st.executeQuery();
+		
+		if (rs.next()) {
+			departmentDTO = new DepartmentDTO();
+			departmentDTO.setEmployeeDTO(new ArrayList<EmployeeDTO>());
+			departmentDTO.setDepartment_name(rs.getString("DEPARTMENT_NAME"));
+			departmentDTO.getEmployeeDTO().get(0).setFirst_name(rs.getString("FIRST_NAME"));
+			EmployeeDTO employeeDTO = new EmployeeDTO();
+			employeeDTO.setFirst_name(rs.getString("FIRST_NAME"));
+			departmentDTO.getEmployeeDTO().add(employeeDTO);
+		}
+		
+		return departmentDTO;
+	}
 	
 	//월급의 평균
 	public HashMap<String, Double> getAvg() throws Exception {
